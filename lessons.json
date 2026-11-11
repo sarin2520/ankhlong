@@ -1,0 +1,494 @@
+{
+  "version": 1,
+  "notes": "หลักสูตรอ่านไทยให้คล่อง สำหรับเด็กที่อ่านเป็นคำได้แล้ว (9 และ 12 ขวบ) — 6 หน่วย 24 บท ถ้าไม่มีไฟล์เสียง ให้แอปอ่านคำ/ข้อความด้วย Web Speech API (th-TH)",
+  "exerciseTypes": {
+    "listen-pick": "ฟังเสียงคำ แล้วแตะคำที่ได้ยิน",
+    "read-pick-picture": "อ่านคำหรือวลี แล้วแตะภาพที่ตรงกัน",
+    "fill-blank": "เลือกคำมาเติมในช่องว่างให้ประโยคถูกต้อง",
+    "order-words": "แตะเรียงคำให้เป็นประโยค (words สลับไว้แล้ว ส่วน answer คือลำดับที่ถูก)",
+    "same-sound": "เลือกคำที่มีเสียงหรือรูปแบบเดียวกับคำตั้งต้น",
+    "story": "อ่านเรื่องสั้นทีละประโยค (แตะประโยคเพื่อฟังเสียงได้) แล้วตอบคำถามท้ายเรื่อง",
+    "read-answer": "อ่านคำถาม แล้วเลือกคำตอบ"
+  },
+  "units": [
+    {
+      "id": "u1",
+      "title": "สระประสมตัวป่วน",
+      "goal": "อ่านสระ เ-ือ เ-ีย -ัว ไ- ใ- ได้ไม่สับสน",
+      "lessons": [
+        {
+          "id": "u1-l1",
+          "title": "สระ เ-ือ",
+          "mascotIntro": "ล่องเรือไปหาเสือกัน!",
+          "words": [
+            { "word": "เรือ", "emoji": "⛵" },
+            { "word": "เสือ", "emoji": "🐯" },
+            { "word": "เกลือ", "emoji": "🧂" },
+            { "word": "เสื้อ", "emoji": "👕" },
+            { "word": "เมือง", "emoji": "🏙️" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "เสือ", "choices": ["เสือ", "เสีย", "เสื้อ"] },
+            { "type": "read-pick-picture", "text": "เรือ", "answer": "⛵", "choices": ["⛵", "🐯", "👕"] },
+            { "type": "fill-blank", "sentence": "แม่ใส่___ลงในแกง", "answer": "เกลือ", "choices": ["เกลือ", "เรือ", "เสือ"] },
+            { "type": "order-words", "words": ["เร็ว", "เสือ", "วิ่ง"], "answer": ["เสือ", "วิ่ง", "เร็ว"] }
+          ],
+          "reward": { "sticker": "tiger-boat" }
+        },
+        {
+          "id": "u1-l2",
+          "title": "สระ เ-ีย",
+          "mascotIntro": "เสียงอะไรดังมาจากห้องเรียนนะ?",
+          "words": [
+            { "word": "เรียน", "emoji": "📚" },
+            { "word": "เตียง", "emoji": "🛏️" },
+            { "word": "เทียน", "emoji": "🕯️" },
+            { "word": "เสียง", "emoji": "🔊" },
+            { "word": "เปียก", "emoji": "💦" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "เตียง", "choices": ["เตียง", "เตือน", "ตั้ง"] },
+            { "type": "read-pick-picture", "text": "เทียน", "answer": "🕯️", "choices": ["🛏️", "🕯️", "📚"] },
+            { "type": "same-sound", "prompt": "คำไหนมีสระ เ-ีย เหมือน \"เรียน\"", "answer": "เปียก", "choices": ["เปียก", "เรือ", "รัว"] },
+            { "type": "fill-blank", "sentence": "ฝนตก เสื้อจึง___", "answer": "เปียก", "choices": ["เปียก", "เสียง", "เทียน"] }
+          ],
+          "reward": { "sticker": "candle-star" }
+        },
+        {
+          "id": "u1-l3",
+          "title": "สระ -ัว",
+          "mascotIntro": "ไปฟาร์มวัวกับสระบัวกัน",
+          "words": [
+            { "word": "วัว", "emoji": "🐄" },
+            { "word": "บัว", "emoji": "🪷" },
+            { "word": "หัว", "emoji": "🙂" },
+            { "word": "กลัว", "emoji": "😨" },
+            { "word": "ครัว", "emoji": "🍳" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "บัว", "choices": ["บัว", "เบือ", "เบีย"] },
+            { "type": "read-pick-picture", "text": "ครัว", "answer": "🍳", "choices": ["🐄", "🍳", "🪷"] },
+            { "type": "fill-blank", "sentence": "น้องไม่___ความมืด", "answer": "กลัว", "choices": ["กลัว", "วัว", "ครัว"] },
+            { "type": "order-words", "words": ["หญ้า", "กิน", "วัว"], "answer": ["วัว", "กิน", "หญ้า"] }
+          ],
+          "reward": { "sticker": "lotus-cow" }
+        },
+        {
+          "id": "u1-l4",
+          "title": "ไม้มลาย ไ- กับ ไม้ม้วน ใ-",
+          "mascotIntro": "ไม้ม้วนมีแค่ 20 คำ มาจำกัน!",
+          "words": [
+            { "word": "ใบไม้", "emoji": "🍃" },
+            { "word": "หัวใจ", "emoji": "❤️" },
+            { "word": "ไฟ", "emoji": "🔥" },
+            { "word": "ไก่", "emoji": "🐔" },
+            { "word": "ใหญ่", "emoji": "🐘" }
+          ],
+          "exercises": [
+            { "type": "same-sound", "prompt": "คำไหนเขียนด้วยไม้ม้วน (ใ)", "answer": "ใส่", "choices": ["ใส่", "ไป", "ไฟ"] },
+            { "type": "read-pick-picture", "text": "ใบไม้", "answer": "🍃", "choices": ["🔥", "🍃", "🐔"] },
+            { "type": "fill-blank", "sentence": "ช้างตัว___มาก", "answer": "ใหญ่", "choices": ["ใหญ่", "ไหญ่", "ใหย่"] },
+            { "type": "fill-blank", "sentence": "พี่___กางเกงสีดำ", "answer": "ใส่", "choices": ["ใส่", "ไส่", "ใสร่"] }
+          ],
+          "reward": { "sticker": "leaf-heart" }
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "title": "เสียงขึ้น เสียงลง (วรรณยุกต์)",
+      "goal": "อ่านวรรณยุกต์ได้ถูกเสียง และรู้ว่าเสียงต่างกันความหมายก็ต่าง",
+      "lessons": [
+        {
+          "id": "u2-l1",
+          "title": "ไม้เอก ( ่ )",
+          "mascotIntro": "ไม้เอกทำให้เสียงต่ำลงนิดนึง",
+          "words": [
+            { "word": "ไข่", "emoji": "🥚" },
+            { "word": "ป่า", "emoji": "🌳" },
+            { "word": "พ่อ", "emoji": "👨" },
+            { "word": "แม่", "emoji": "👩" },
+            { "word": "บ่อ", "emoji": "🕳️" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "ป่า", "choices": ["ปา", "ป่า", "ป้า"] },
+            { "type": "read-pick-picture", "text": "ไข่", "answer": "🥚", "choices": ["🥚", "🌳", "👨"] },
+            { "type": "fill-blank", "sentence": "___ทอดไข่ให้ลูกกิน", "answer": "แม่", "choices": ["แม่", "แม", "แม้"] }
+          ],
+          "reward": { "sticker": "forest-egg" }
+        },
+        {
+          "id": "u2-l2",
+          "title": "ไม้โท ( ้ )",
+          "mascotIntro": "ไม้โทเหมือนเสียงตอนเราตกใจ!",
+          "words": [
+            { "word": "ข้าว", "emoji": "🍚" },
+            { "word": "น้ำ", "emoji": "💧" },
+            { "word": "ช้าง", "emoji": "🐘" },
+            { "word": "ม้า", "emoji": "🐴" },
+            { "word": "ร้อน", "emoji": "🥵" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "ช้าง", "choices": ["ช่าง", "ช้าง", "ชาง"] },
+            { "type": "read-pick-picture", "text": "ม้า", "answer": "🐴", "choices": ["🐘", "🐴", "🐶"] },
+            { "type": "fill-blank", "sentence": "อากาศ___ ต้องดื่มน้ำเยอะๆ", "answer": "ร้อน", "choices": ["ร้อน", "ร่อน", "รอน"] }
+          ],
+          "reward": { "sticker": "elephant-water" }
+        },
+        {
+          "id": "u2-l3",
+          "title": "เสียงต่าง ความหมายต่าง",
+          "mascotIntro": "ขาว ข่าว ข้าว — ฟังดีๆ นะ",
+          "words": [
+            { "word": "ขาว", "emoji": "⚪" },
+            { "word": "ข่าว", "emoji": "📰" },
+            { "word": "ข้าว", "emoji": "🍚" },
+            { "word": "หมา", "emoji": "🐶" },
+            { "word": "ม้า", "emoji": "🐴" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "ข่าว", "choices": ["ขาว", "ข่าว", "ข้าว"] },
+            { "type": "listen-pick", "answer": "หมา", "choices": ["มา", "หมา", "ม้า"] },
+            { "type": "fill-blank", "sentence": "พ่อดู___ทางทีวี", "answer": "ข่าว", "choices": ["ขาว", "ข่าว", "ข้าว"] },
+            { "type": "fill-blank", "sentence": "เมฆสี___ลอยบนฟ้า", "answer": "ขาว", "choices": ["ขาว", "ข่าว", "ข้าว"] }
+          ],
+          "reward": { "sticker": "news-dog" }
+        },
+        {
+          "id": "u2-l4",
+          "title": "ไม้ตรี ( ๊ ) และไม้จัตวา ( ๋ )",
+          "mascotIntro": "สองตัวนี้นานๆ เจอที แต่ต้องรู้จัก!",
+          "words": [
+            { "word": "โต๊ะ", "emoji": "🪑" },
+            { "word": "ตุ๊กตา", "emoji": "🧸" },
+            { "word": "ก๋วยเตี๋ยว", "emoji": "🍜" },
+            { "word": "จ๋า", "emoji": "💬" }
+          ],
+          "exercises": [
+            { "type": "read-pick-picture", "text": "ตุ๊กตา", "answer": "🧸", "choices": ["🪑", "🧸", "🍜"] },
+            { "type": "listen-pick", "answer": "ก๋วยเตี๋ยว", "choices": ["ก๋วยเตี๋ยว", "กวยเตียว", "ก่วยเตี่ยว"] },
+            { "type": "order-words", "words": ["บน", "ตุ๊กตา", "โต๊ะ", "อยู่"], "answer": ["ตุ๊กตา", "อยู่", "บน", "โต๊ะ"] }
+          ],
+          "reward": { "sticker": "noodle-bear" }
+        }
+      ]
+    },
+    {
+      "id": "u3",
+      "title": "ตัวสะกดและตัวการันต์",
+      "goal": "อ่านคำที่มีตัวสะกดได้ถูก รู้ว่าตัวสะกดต่างตัวอาจออกเสียงเดียวกัน และข้ามตัวการันต์ได้",
+      "lessons": [
+        {
+          "id": "u3-l1",
+          "title": "แม่กน แม่กง แม่กม",
+          "mascotIntro": "ลิงกินส้ม แล้วบินไปไหนนะ?",
+          "words": [
+            { "word": "ลิง", "emoji": "🐒" },
+            { "word": "ส้ม", "emoji": "🍊" },
+            { "word": "นม", "emoji": "🥛" },
+            { "word": "จาน", "emoji": "🍽️" },
+            { "word": "บิน", "emoji": "🕊️" }
+          ],
+          "exercises": [
+            { "type": "read-pick-picture", "text": "ส้ม", "answer": "🍊", "choices": ["🍊", "🥛", "🐒"] },
+            { "type": "same-sound", "prompt": "คำไหนลงท้ายด้วยเสียง \"ง\" เหมือน \"ลิง\"", "answer": "ช้าง", "choices": ["ช้าง", "จาน", "นม"] },
+            { "type": "order-words", "words": ["ทุกเช้า", "ดื่ม", "นม", "น้อง"], "answer": ["น้อง", "ดื่ม", "นม", "ทุกเช้า"] }
+          ],
+          "reward": { "sticker": "monkey-orange" }
+        },
+        {
+          "id": "u3-l2",
+          "title": "แม่กก แม่กด แม่กบ",
+          "mascotIntro": "เสียงสั้นๆ หยุดเร็วๆ แบบ นก มด กบ",
+          "words": [
+            { "word": "นก", "emoji": "🐦" },
+            { "word": "มด", "emoji": "🐜" },
+            { "word": "กบ", "emoji": "🐸" },
+            { "word": "ผัก", "emoji": "🥬" },
+            { "word": "ลูกบอล", "emoji": "⚽" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "มด", "choices": ["มด", "มก", "มบ"] },
+            { "type": "read-pick-picture", "text": "กบ", "answer": "🐸", "choices": ["🐦", "🐜", "🐸"] },
+            { "type": "fill-blank", "sentence": "แม่บอกให้กิน___เยอะๆ", "answer": "ผัก", "choices": ["ผัก", "นก", "มด"] }
+          ],
+          "reward": { "sticker": "frog-bird" }
+        },
+        {
+          "id": "u3-l3",
+          "title": "ตัวสะกดต่างกัน เสียงเหมือนกัน",
+          "mascotIntro": "รถ กับ มด ลงท้ายเสียงเดียวกันนะ รู้ไหม?",
+          "words": [
+            { "word": "รถ", "emoji": "🚗" },
+            { "word": "บาท", "emoji": "💰" },
+            { "word": "ภาพ", "emoji": "🖼️" },
+            { "word": "รูป", "emoji": "📷" },
+            { "word": "ประเทศ", "emoji": "🗺️" }
+          ],
+          "exercises": [
+            { "type": "same-sound", "prompt": "คำไหนลงท้ายเสียง \"ด\" เหมือน \"มด\"", "answer": "รถ", "choices": ["รถ", "ภาพ", "นก"] },
+            { "type": "same-sound", "prompt": "คำไหนลงท้ายเสียง \"บ\" เหมือน \"กบ\"", "answer": "ภาพ", "choices": ["ภาพ", "บาท", "ผัก"] },
+            { "type": "fill-blank", "sentence": "ขนมชิ้นนี้ราคาสิบ___", "answer": "บาท", "choices": ["บาท", "บาด", "บาตร"] }
+          ],
+          "reward": { "sticker": "car-photo" }
+        },
+        {
+          "id": "u3-l4",
+          "title": "ตัวการันต์ ( ์ ) — ตัวที่ไม่ต้องอ่าน",
+          "mascotIntro": "เห็นหมวก ์ เมื่อไหร่ ตัวนั้นไม่ต้องออกเสียง!",
+          "words": [
+            { "word": "การ์ตูน", "emoji": "📺" },
+            { "word": "โทรศัพท์", "emoji": "📱" },
+            { "word": "จันทร์", "emoji": "🌙" },
+            { "word": "สัตว์", "emoji": "🐾" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "โทรศัพท์", "choices": ["โทรศัพท์", "โทรสับ", "โทรศัพ"] },
+            { "type": "read-pick-picture", "text": "พระจันทร์", "answer": "🌙", "choices": ["☀️", "🌙", "⭐"] },
+            { "type": "fill-blank", "sentence": "สวน___มีช้างและยีราฟ", "answer": "สัตว์", "choices": ["สัตว์", "สัด", "สัตร์"] },
+            { "type": "order-words", "words": ["ดู", "ชอบ", "การ์ตูน", "น้อง"], "answer": ["น้อง", "ชอบ", "ดู", "การ์ตูน"] }
+          ],
+          "reward": { "sticker": "moon-phone" }
+        }
+      ]
+    },
+    {
+      "id": "u4",
+      "title": "คำควบกล้ำและอักษรนำ",
+      "goal": "อ่านคำควบกล้ำ ร ล ว และคำที่มี ห หรือ อ นำ ได้ถูกต้อง",
+      "lessons": [
+        {
+          "id": "u4-l1",
+          "title": "ควบกล้ำ ร ล ว",
+          "mascotIntro": "สองเสียงวิ่งมาชนกัน กลายเป็นเสียงเดียว!",
+          "words": [
+            { "word": "ปลา", "emoji": "🐟" },
+            { "word": "ครู", "emoji": "🧑‍🏫" },
+            { "word": "แปรง", "emoji": "🪥" },
+            { "word": "ขวด", "emoji": "🍾" },
+            { "word": "ไกล", "emoji": "🏔️" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "ปลา", "choices": ["ปลา", "ปา", "ลา"] },
+            { "type": "read-pick-picture", "text": "แปรงสีฟัน", "answer": "🪥", "choices": ["🪥", "🍾", "🐟"] },
+            { "type": "fill-blank", "sentence": "___สอนหนังสือที่โรงเรียน", "answer": "ครู", "choices": ["ครู", "คู", "รู"] },
+            { "type": "order-words", "words": ["ใน", "ว่าย", "ปลา", "น้ำ"], "answer": ["ปลา", "ว่าย", "ใน", "น้ำ"] }
+          ],
+          "reward": { "sticker": "fish-brush" }
+        },
+        {
+          "id": "u4-l2",
+          "title": "ห นำ",
+          "mascotIntro": "ห ตัวเงียบ คอยช่วยเปลี่ยนเสียงเพื่อน",
+          "words": [
+            { "word": "หมา", "emoji": "🐶" },
+            { "word": "หนู", "emoji": "🐭" },
+            { "word": "หมอ", "emoji": "🧑‍⚕️" },
+            { "word": "หลับ", "emoji": "😴" },
+            { "word": "หวาน", "emoji": "🍬" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "หนู", "choices": ["หนู", "นู", "หู"] },
+            { "type": "read-pick-picture", "text": "หมอ", "answer": "🧑‍⚕️", "choices": ["🧑‍🏫", "🧑‍⚕️", "👨"] },
+            { "type": "fill-blank", "sentence": "ลูกอมรส___มาก", "answer": "หวาน", "choices": ["หวาน", "วาน", "หาน"] },
+            { "type": "order-words", "words": ["หลับ", "บน", "หมา", "โซฟา"], "answer": ["หมา", "หลับ", "บน", "โซฟา"] }
+          ],
+          "reward": { "sticker": "sleepy-mouse" }
+        },
+        {
+          "id": "u4-l3",
+          "title": "อ นำ ย (มีแค่ 4 คำ!)",
+          "mascotIntro": "อย่า อยู่ อย่าง อยาก — สี่คำนี้ อ ไม่ต้องออกเสียง",
+          "words": [
+            { "word": "อย่า", "emoji": "✋" },
+            { "word": "อยู่", "emoji": "🏠" },
+            { "word": "อย่าง", "emoji": "✨" },
+            { "word": "อยาก", "emoji": "🤩" }
+          ],
+          "exercises": [
+            { "type": "listen-pick", "answer": "อยาก", "choices": ["อยาก", "อย่า", "อยู่"] },
+            { "type": "fill-blank", "sentence": "ฉัน___กินไอศกรีม", "answer": "อยาก", "choices": ["อยาก", "อย่า", "อยู่"] },
+            { "type": "fill-blank", "sentence": "___วิ่งในห้องนะ", "answer": "อย่า", "choices": ["อย่า", "อยาก", "อย่าง"] },
+            { "type": "fill-blank", "sentence": "แมว___ใต้โต๊ะ", "answer": "อยู่", "choices": ["อยู่", "อย่าง", "อยาก"] }
+          ],
+          "reward": { "sticker": "four-friends" }
+        },
+        {
+          "id": "u4-l4",
+          "title": "ร หัน ( รร )",
+          "mascotIntro": "เจอ รร ให้อ่านเหมือนมีสระอะ",
+          "words": [
+            { "word": "กรรไกร", "emoji": "✂️" },
+            { "word": "บรรทัด", "emoji": "📏" },
+            { "word": "ธรรมชาติ", "emoji": "🌿" },
+            { "word": "ภรรยา", "emoji": "👰" }
+          ],
+          "exercises": [
+            { "type": "read-pick-picture", "text": "กรรไกร", "answer": "✂️", "choices": ["📏", "✂️", "🌿"] },
+            { "type": "listen-pick", "answer": "บรรทัด", "choices": ["บรรทัด", "บันทัด", "บรทัด"] },
+            { "type": "fill-blank", "sentence": "ใช้ไม้___ขีดเส้นให้ตรง", "answer": "บรรทัด", "choices": ["บรรทัด", "กรรไกร", "ธรรมชาติ"] }
+          ],
+          "reward": { "sticker": "scissor-leaf" }
+        }
+      ]
+    },
+    {
+      "id": "u5",
+      "title": "อ่านเป็นวลีและประโยค",
+      "goal": "อ่านคำต่อกันเป็นกลุ่ม ไม่สะกดทีละคำ และเข้าใจประโยค",
+      "lessons": [
+        {
+          "id": "u5-l1",
+          "title": "วลีสั้นๆ",
+          "mascotIntro": "ลองอ่านรวดเดียว ไม่ต้องหยุดระหว่างคำนะ",
+          "words": [
+            { "word": "แมวสีดำ", "emoji": "🐈‍⬛" },
+            { "word": "ข้าวผัดไข่", "emoji": "🍳" },
+            { "word": "รถคันใหญ่", "emoji": "🚌" },
+            { "word": "ดอกไม้สีแดง", "emoji": "🌹" }
+          ],
+          "exercises": [
+            { "type": "read-pick-picture", "text": "แมวสีดำ", "answer": "🐈‍⬛", "choices": ["🐈‍⬛", "🐈", "🐕"] },
+            { "type": "read-pick-picture", "text": "ดอกไม้สีเหลือง", "answer": "🌻", "choices": ["🌹", "🌻", "🌷"] },
+            { "type": "read-pick-picture", "text": "รถคันใหญ่", "answer": "🚌", "choices": ["🚗", "🚲", "🚌"] }
+          ],
+          "reward": { "sticker": "black-cat" }
+        },
+        {
+          "id": "u5-l2",
+          "title": "ใคร ทำอะไร ที่ไหน",
+          "mascotIntro": "ประโยคมีใคร ทำอะไร และบางทีก็บอกว่าที่ไหน",
+          "words": [],
+          "exercises": [
+            { "type": "order-words", "words": ["ข้าว", "พี่", "กิน"], "answer": ["พี่", "กิน", "ข้าว"] },
+            { "type": "order-words", "words": ["ในสวน", "เล่น", "น้อง", "ฟุตบอล"], "answer": ["น้อง", "เล่น", "ฟุตบอล", "ในสวน"] },
+            { "type": "order-words", "words": ["ที่ตลาด", "ผลไม้", "แม่", "ซื้อ"], "answer": ["แม่", "ซื้อ", "ผลไม้", "ที่ตลาด"] },
+            { "type": "read-pick-picture", "text": "เด็กผู้ชายขี่จักรยาน", "answer": "🚴", "choices": ["🏊", "🚴", "⚽"] }
+          ],
+          "reward": { "sticker": "bike-kid" }
+        },
+        {
+          "id": "u5-l3",
+          "title": "และ แต่ เพราะ",
+          "mascotIntro": "คำเชื่อมช่วยต่อสองเรื่องให้เป็นประโยคเดียว",
+          "words": [],
+          "exercises": [
+            { "type": "fill-blank", "sentence": "ฉันชอบแมว___หมา", "answer": "และ", "choices": ["และ", "แต่", "เพราะ"] },
+            { "type": "fill-blank", "sentence": "น้องอยากไปเล่น___ฝนตก", "answer": "แต่", "choices": ["และ", "แต่", "เพราะ"] },
+            { "type": "fill-blank", "sentence": "พี่ง่วงนอน___นอนดึก", "answer": "เพราะ", "choices": ["และ", "แต่", "เพราะ"] },
+            { "type": "order-words", "words": ["เพราะ", "หิว", "กินข้าว", "ฉัน"], "answer": ["ฉัน", "กินข้าว", "เพราะ", "หิว"] }
+          ],
+          "reward": { "sticker": "rain-cloud" }
+        },
+        {
+          "id": "u5-l4",
+          "title": "ประโยคคำถาม",
+          "mascotIntro": "อะไร ที่ไหน ไหม — มาเป็นนักสืบกัน!",
+          "words": [],
+          "exercises": [
+            { "type": "read-answer", "question": "แมวชอบกินอะไร", "answer": "ปลา", "choices": ["ปลา", "หญ้า", "ขนมปัง"] },
+            { "type": "read-answer", "question": "เราไปว่ายน้ำที่ไหน", "answer": "สระว่ายน้ำ", "choices": ["สระว่ายน้ำ", "ห้องสมุด", "ห้องครัว"] },
+            { "type": "read-answer", "question": "ช้างตัวเล็กกว่ามดไหม", "answer": "ไม่", "choices": ["ใช่", "ไม่"] },
+            { "type": "fill-blank", "sentence": "วันนี้หนูอยากกิน___", "answer": "อะไร", "choices": ["อะไร", "ที่ไหน", "ไหม"] }
+          ],
+          "reward": { "sticker": "detective" }
+        }
+      ]
+    },
+    {
+      "id": "u6",
+      "title": "นักอ่านเรื่องสั้น",
+      "goal": "อ่านเรื่องสั้น 4–6 ประโยคได้รวดเดียว และตอบคำถามจากเรื่อง",
+      "lessons": [
+        {
+          "id": "u6-l1",
+          "title": "เรื่อง: แมวหิว",
+          "mascotIntro": "อ่านจบแล้วมีคำถามรออยู่นะ",
+          "words": [],
+          "exercises": [
+            {
+              "type": "story",
+              "sentences": [
+                "เช้าวันหนึ่ง แมวสีส้มตื่นนอน",
+                "มันหิวมาก จึงเดินไปในครัว",
+                "ในครัวมีปลาทอดอยู่บนจาน",
+                "แมวกระโดดขึ้นโต๊ะ แต่แม่เห็นก่อน",
+                "แม่หัวเราะ แล้วแบ่งปลาให้แมวหนึ่งชิ้น"
+              ],
+              "questions": [
+                { "question": "แมวในเรื่องสีอะไร", "answer": "สีส้ม", "choices": ["สีดำ", "สีส้ม", "สีขาว"] },
+                { "question": "ในครัวมีอะไรอยู่บนจาน", "answer": "ปลาทอด", "choices": ["ไข่ทอด", "ปลาทอด", "ขนมปัง"] },
+                { "question": "ตอนจบ แม่ทำอะไร", "answer": "แบ่งปลาให้แมว", "choices": ["ดุแมว", "แบ่งปลาให้แมว", "ไล่แมวออกไป"] }
+              ]
+            }
+          ],
+          "reward": { "sticker": "orange-cat" }
+        },
+        {
+          "id": "u6-l2",
+          "title": "เรื่อง: วันไปทะเล",
+          "mascotIntro": "เตรียมครีมกันแดด ไปทะเลกัน!",
+          "words": [],
+          "exercises": [
+            {
+              "type": "story",
+              "sentences": [
+                "วันเสาร์ ครอบครัวของเราไปเที่ยวทะเล",
+                "พี่ชายก่อปราสาททรายหลังใหญ่",
+                "น้องสาวเก็บเปลือกหอยได้สิบอัน",
+                "ตอนบ่าย คลื่นซัดปราสาททรายพังหมด",
+                "พี่ชายไม่เสียใจ เพราะพรุ่งนี้จะสร้างใหม่"
+              ],
+              "questions": [
+                { "question": "ครอบครัวไปทะเลวันอะไร", "answer": "วันเสาร์", "choices": ["วันจันทร์", "วันเสาร์", "วันอาทิตย์"] },
+                { "question": "น้องสาวเก็บอะไร", "answer": "เปลือกหอย", "choices": ["ก้อนหิน", "เปลือกหอย", "ปู"] },
+                { "question": "ทำไมพี่ชายไม่เสียใจ", "answer": "เพราะพรุ่งนี้จะสร้างใหม่", "choices": ["เพราะไม่ชอบปราสาท", "เพราะพรุ่งนี้จะสร้างใหม่", "เพราะหลับอยู่"] }
+              ]
+            }
+          ],
+          "reward": { "sticker": "sand-castle" }
+        },
+        {
+          "id": "u6-l3",
+          "title": "เรื่อง: ช้างน้อยหลงทาง",
+          "mascotIntro": "เรื่องนี้ยาวขึ้นอีกนิด ค่อยๆ อ่านนะ",
+          "words": [],
+          "exercises": [
+            {
+              "type": "story",
+              "sentences": [
+                "ช้างน้อยวิ่งไล่ผีเสื้อเข้าไปในป่าลึก",
+                "พอหันกลับมา ก็ไม่เห็นแม่แล้ว",
+                "ช้างน้อยกลัวมาก จึงร้องเสียงดัง",
+                "นกตัวหนึ่งได้ยิน จึงบินขึ้นไปบนฟ้าเพื่อหาแม่ช้าง",
+                "ไม่นานนัก แม่ช้างก็เดินตามเสียงนกมาเจอ",
+                "ช้างน้อยขอบคุณนก และสัญญาว่าจะไม่วิ่งไปไกลอีก"
+              ],
+              "questions": [
+                { "question": "ช้างน้อยวิ่งไล่อะไร", "answer": "ผีเสื้อ", "choices": ["กระต่าย", "ผีเสื้อ", "นก"] },
+                { "question": "ใครช่วยหาแม่ช้าง", "answer": "นก", "choices": ["ลิง", "นก", "เสือ"] },
+                { "question": "ช้างน้อยสัญญาว่าอะไร", "answer": "จะไม่วิ่งไปไกลอีก", "choices": ["จะไม่ร้องไห้", "จะไม่วิ่งไปไกลอีก", "จะจับผีเสื้อให้ได้"] }
+              ]
+            }
+          ],
+          "reward": { "sticker": "elephant-bird" }
+        },
+        {
+          "id": "u6-l4",
+          "title": "บททบทวนใหญ่",
+          "mascotIntro": "ด่านสุดท้าย! รวมทุกอย่างที่เรียนมา",
+          "isBoss": true,
+          "words": [],
+          "exercises": [
+            { "type": "listen-pick", "answer": "เกลือ", "choices": ["เกลือ", "เกลีย", "กลัว"] },
+            { "type": "fill-blank", "sentence": "เมฆสี___ลอยบนฟ้า", "answer": "ขาว", "choices": ["ขาว", "ข่าว", "ข้าว"] },
+            { "type": "fill-blank", "sentence": "ฉัน___ไปสวนสัตว์", "answer": "อยาก", "choices": ["อยาก", "อย่า", "อยู่"] },
+            { "type": "order-words", "words": ["เพราะ", "ร้องไห้", "หลงทาง", "ช้างน้อย"], "answer": ["ช้างน้อย", "ร้องไห้", "เพราะ", "หลงทาง"] },
+            { "type": "read-answer", "question": "ใช้อะไรตัดกระดาษ", "answer": "กรรไกร", "choices": ["บรรทัด", "กรรไกร", "แปรง"] }
+          ],
+          "reward": { "sticker": "gold-trophy", "unlock": "mascot-crown" }
+        }
+      ]
+    }
+  ]
+}

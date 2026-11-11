@@ -1,0 +1,12 @@
+{
+  "name": "อ่านคล่อง",
+  "short_name": "อ่านคล่อง",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fbf7f0",
+  "theme_color": "#fbf7f0",
+  "icons": [
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
