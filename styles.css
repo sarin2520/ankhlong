@@ -328,3 +328,12 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.3; }
   .node:nth-child(4n+3) { padding-left: 80px; }
   .miles { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ---------- 3D partners (drawn by characters.js) ---------- */
+.m3d { position: relative; display: inline-block; flex: none; width: var(--s, 88px); height: var(--s, 88px); }
+.m3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.m3d-fb { position: absolute; inset: 0; display: grid; place-items: center; font-size: calc(var(--s, 88px) * 0.55); line-height: 1; }
+.m3d.live .m3d-fb { display: none; }
+.fb .m3d { margin: -14px 0 -10px -6px; }
+.duo .m3d + .m3d { margin-left: -10px; }
+.done .bubble::before { display: none; }

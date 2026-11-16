@@ -3,44 +3,37 @@
 
 // ---------------------------------------------------------------- config
 const STORE_KEY = 'ankhlong-v1';
-const APP_VERSION = '1.0.6';
+const APP_VERSION = '1.1.1';
 const XP_PER_STEP = 10;
 const XP_LESSON_BONUS = 20;
 const XP_REPLAY_BONUS = 10;
 
-const ANIMALS = [
-  { id: 'tiger', e: '🐯', name: 'เสือ' },
-  { id: 'fox', e: '🦊', name: 'จิ้งจอก' },
-  { id: 'panda', e: '🐼', name: 'แพนด้า' },
-  { id: 'frog', e: '🐸', name: 'กบ' },
-  { id: 'octo', e: '🐙', name: 'ปลาหมึก' },
-  { id: 'owl', e: '🦉', name: 'นกฮูก' },
-  { id: 'koala', e: '🐨', name: 'โคอาลา' },
-  { id: 'dino', e: '🦖', name: 'ไดโนเสาร์' },
-  { id: 'dragon', e: '🐉', name: 'มังกร', team: 10 },
-];
+// Each child has their own 3D partner (characters.js): ปุณ = เต่า, เปญ่า = ยูนิคอร์น
+const KIDS = { pun: { e: '🐢', name: 'เต่า', part: 'สีกระดอง' }, pena: { e: '🦄', name: 'ยูนิคอร์น', part: 'สีแผงคอ' } };
 const COLORS = [
-  { id: 'blue', c: '#3f8fd9' }, { id: 'pink', c: '#e8618c' }, { id: 'green', c: '#2fb27a' },
+  { id: 'green', c: '#3f8f5e' }, { id: 'blue', c: '#3f8fd9' }, { id: 'pink', c: '#e8618c' },
   { id: 'purple', c: '#8a5ad6' }, { id: 'orange', c: '#f08a24' }, { id: 'navy', c: '#2c3a6e' },
-  { id: 'rainbow', c: 'rainbow', team: 20 },
+  { id: 'rainbow', c: 'rainbow', team: 10 },
 ];
 const ACCS = [
-  { id: 'none', e: '✖️', name: 'ไม่ใส่', pos: '' },
-  { id: 'cap', e: '🧢', name: 'หมวกแก๊ป', pos: 'top' },
-  { id: 'phones', e: '🎧', name: 'หูฟัง', pos: 'top', level: 2 },
-  { id: 'shades', e: '🕶️', name: 'แว่นกันแดด', pos: 'eyes', level: 3 },
-  { id: 'bow', e: '🎀', name: 'โบว์', pos: 'top', level: 4 },
-  { id: 'tophat', e: '🎩', name: 'หมวกทรงสูง', pos: 'top', level: 5 },
-  { id: 'ball', e: '⚽', name: 'ลูกบอล', pos: 'side', level: 6 },
-  { id: 'star', e: '🌟', name: 'ดาวทีม', pos: 'side', team: 32 },
-  { id: 'crown', e: '👑', name: 'มงกุฎ', pos: 'top', unlock: 'mascot-crown' },
+  { id: 'none', e: '✖️', name: 'ไม่ใส่' },
+  { id: 'cap', e: '🧢', name: 'หมวกแก๊ป' },
+  { id: 'phones', e: '🎧', name: 'หูฟัง', level: 2 },
+  { id: 'shades', e: '🕶️', name: 'แว่นกันแดด', level: 3 },
+  { id: 'bow', e: '🎀', name: 'โบว์', level: 4 },
+  { id: 'tophat', e: '🎩', name: 'หมวกทรงสูง', level: 5 },
+  { id: 'ball', e: '⚽', name: 'ลูกบอล', level: 6 },
+  { id: 'star', e: '🌟', name: 'ดาวทีม', team: 20 },
+  { id: 'medal', e: '🏅', name: 'เหรียญแชมป์', team: 48 },
+  { id: 'crown', e: '👑', name: 'มงกุฎ', unlock: 'mascot-crown' },
 ];
 const TEAM_GOALS = [
-  { n: 10, e: '🐉', name: 'มาสคอตมังกร' },
-  { n: 20, e: '🌈', name: 'สีรุ้ง' },
-  { n: 32, e: '🌟', name: 'ดาวทีม' },
-  { n: 48, e: '🏅', name: 'ทีมนักอ่านตัวจริง' },
+  { n: 10, e: '🌈', name: 'สีรุ้ง' },
+  { n: 20, e: '🌟', name: 'ดาวทีม' },
+  { n: 32, e: '💃', name: 'ท่าฉลองพิเศษ' },
+  { n: 48, e: '🏅', name: 'เหรียญแชมป์' },
 ];
+const GRUMPY_AFTER_DAYS = 2;   // partner sulks (playfully) after this many days without a lesson
 const STICKERS = {
   'tiger-boat': '🐯⛵', 'candle-star': '🕯️⭐', 'lotus-cow': '🪷🐄', 'leaf-heart': '🍃❤️',
   'forest-egg': '🌳🥚', 'elephant-water': '🐘💧', 'news-dog': '📰🐶', 'noodle-bear': '🍜🐻',
@@ -65,7 +58,7 @@ function newProfile(name, age, color) {
 }
 function defaults() {
   return {
-    profiles: { pun: newProfile('ปุณ', 12, 'blue'), pena: newProfile('เปญ่า', 9, 'pink') },
+    profiles: { pun: newProfile('ปุณ', 12, 'green'), pena: newProfile('เปญ่า', 9, 'pink') },
     order: ['pun', 'pena'],
     settings: { rate: 0.85 },
   };
@@ -234,14 +227,14 @@ document.addEventListener('click', e => {
 });
 
 // ---------------------------------------------------------------- mascot
-function mascotHTML(m, size = 88, extra = '') {
-  m = m || { animal: 'tiger', color: 'blue', acc: 'none' };
-  const a = ANIMALS.find(x => x.id === m.animal) || ANIMALS[0];
-  const col = COLORS.find(x => x.id === m.color) || COLORS[0];
-  const acc = ACCS.find(x => x.id === m.acc);
-  const bg = col.c === 'rainbow' ? '' : `--c:${col.c};`;
-  return `<span class="mascot ${col.c === 'rainbow' ? 'rainbow' : ''} ${extra}" style="--s:${size}px;${bg}">
-    <span class="an">${a.e}</span>${acc && acc.pos ? `<span class="acc ${acc.pos}">${acc.e}</span>` : ''}</span>`;
+const defaultMascot = kid => ({ color: kid === 'pena' ? 'pink' : 'green', acc: 'none' });
+// A 3D partner. clip: idle | hello | yay | cheer | cheer2 | encourage | grumpy | forgive.
+// The emoji shows until characters.js has drawn the 3D version (or if WebGL is unavailable).
+function mascotHTML(m, size = 88, clip = 'idle', kid = CUR, still = false) {
+  m = m || defaultMascot(kid);
+  const col = COLORS.find(x => x.id === m.color) || COLORS.find(x => x.id === defaultMascot(kid).color);
+  const acc = ACCS.some(a => a.id === m.acc) ? m.acc : 'none';
+  return `<span class="m3d" style="--s:${size}px" data-kid="${kid}" data-clip="${clip}" data-color="${col.c}" data-acc="${acc}" ${still ? 'data-still="1"' : ''}><canvas></canvas><span class="m3d-fb">${KIDS[kid].e}</span></span>`;
 }
 function itemLocked(p, it) {
   if (it.team && teamCount() < it.team) return `ทีมครบ ${it.team} บท`;
@@ -287,9 +280,8 @@ function pickerHTML() {
     <div class="profiles">
       ${S.order.map(id => {
         const p = S.profiles[id]; const lv = levelInfo(p.xp);
-        const m = p.mascot || { animal: id === 'pun' ? 'tiger' : 'fox', color: p.defColor, acc: 'none' };
         return `<button class="pcard ${id}" data-on="choose|${id}">
-          ${mascotHTML(m, 104, 'bounce')}
+          ${mascotHTML(p.mascot, 132, 'idle', id)}
           <div class="name">${esc(p.name)}</div>
           ${p.mascot ? `<div class="lv">เลเวล ${lv.lvl} · เรียนแล้ว ${Object.keys(p.completed).length} บท</div>` : `<div class="new">แตะเพื่อเริ่ม</div>`}
         </button>`;
@@ -305,7 +297,7 @@ function teamHTML() {
   const pct = g ? ((n - prevN) / (g.n - prevN)) * 100 : 100;
   return `<div class="team">
     <div class="team-head">
-      <div class="duo">${S.order.map(id => { const p = S.profiles[id]; return mascotHTML(p.mascot || { animal: id === 'pun' ? 'tiger' : 'fox', color: p.defColor }, 46); }).join('')}</div>
+      <div class="duo">${S.order.map(id => { const p = S.profiles[id]; return mascotHTML(p.mascot, 52, 'idle', id, true); }).join('')}</div>
       <div class="t"><h3>เป้าหมายทีม</h3>
         <div class="small muted">${g ? `เรียนรวมกันอีก ${g.n - n} บท ได้ ${g.e} ${g.name} ทั้งสองคน` : 'ทีมเราปลดล็อกครบทุกรางวัลแล้ว!'}</div></div>
     </div>
@@ -314,23 +306,55 @@ function teamHTML() {
     <div class="miles">${TEAM_GOALS.map(t => `<div class="mile ${n >= t.n ? 'got' : ''}"><span class="e">${t.e}</span>${t.n} บท<br>${t.name}</div>`).join('')}</div>
   </div>`;
 }
-window.choose = id => { CUR = id; TAB = 'path'; render(); };
+window.choose = id => {
+  CUR = id; TAB = 'path';
+  const p = P(), away = p.mascot && p.lastPlayed ? Date.now() - p.lastPlayed : 0;
+  if (away > GRUMPY_AFTER_DAYS * 86400000) return showGrumpy(Math.floor(away / 86400000));
+  render();
+};
+// ---------------------------------------------------------------- partner sulks after a long break
+function showGrumpy(days) {
+  const p = P(), k = KIDS[CUR];
+  const line = `${p.name} หายไปไหนมาตั้ง ${days} วัน! ${k.name}รอเล่นด้วยอยู่นะ`;
+  $('#app').innerHTML = `<div class="done">
+    <h1>งอนแล้วนะ!</h1>
+    ${mascotHTML(p.mascot, 230, 'grumpy')}
+    <div class="bubble" style="flex:none;width:100%">${tapWords(line)} ${sayBtn(line)}</div>
+    <div style="width:100%;margin-top:6px"><button class="btn block good" data-on="forgive">ขอโทษนะ มาเล่นกันต่อ!</button></div>
+  </div>`;
+  setTimeout(() => speak(line), 400);
+}
+window.forgive = () => {
+  const p = P(), k = KIDS[CUR];
+  p.lastPlayed = Date.now(); save();
+  const line = 'ไม่เป็นไร! คิดถึงนะ ไปเรียนกันเถอะ';
+  $('#app').innerHTML = `<div class="done">
+    <h1>หายงอนแล้ว!</h1>
+    ${mascotHTML(p.mascot, 230, 'forgive')}
+    <div class="bubble" style="flex:none;width:100%">${tapWords(line)} ${sayBtn(line)}</div>
+    <div style="width:100%;margin-top:6px"><button class="btn block good" data-on="goPath">ไปเรียนกัน</button></div>
+  </div>`;
+  speak(line);
+};
 
 // ---------------------------------------------------------------- first-time mascot setup
 let DRAFT = null;
+let DRAFT_CLIP = 'hello';
 function setupHTML() {
-  const p = P();
-  if (!DRAFT) DRAFT = { animal: CUR === 'pun' ? 'tiger' : 'fox', color: p.defColor, acc: 'none' };
+  const p = P(), k = KIDS[CUR];
+  if (!DRAFT) DRAFT = defaultMascot(CUR);
+  const clip = DRAFT_CLIP; DRAFT_CLIP = 'yay';
+  const line = `สวัสดี ${p.name}! เราคือ${k.name} คู่หูของ${p.name}`;
   return `<div class="wrap">
     <div class="brandline"><button class="iconbtn" data-on="back">←</button><div></div></div>
     <h1>สวัสดี ${esc(p.name)}!</h1>
-    <p class="muted">เลือกเพื่อนคู่หูที่จะเรียนไปด้วยกัน แต่งเพิ่มได้ทีหลังนะ</p>
-    <div class="preview">${mascotHTML(DRAFT, 140, 'pop')}</div>
+    <div class="preview">${mascotHTML(DRAFT, 220, clip)}</div>
+    <div class="bubble" style="margin:4px 0 0">${tapWords(line)} ${sayBtn(line)}</div>
     ${customizerHTML(DRAFT, true)}
-    <div style="margin-top:22px"><button class="btn block good" data-on="finishSetup">เลือกตัวนี้</button></div>
+    <div style="margin-top:22px"><button class="btn block good" data-on="finishSetup">ไปกันเลย</button></div>
   </div>`;
 }
-window.finishSetup = () => { P().mascot = DRAFT; DRAFT = null; save(); render(); };
+window.finishSetup = () => { const p = P(); p.mascot = DRAFT; p.lastPlayed = Date.now(); DRAFT = null; DRAFT_CLIP = 'hello'; save(); render(); };
 
 function customizerHTML(m, setup) {
   const p = P();
@@ -341,25 +365,24 @@ function customizerHTML(m, setup) {
       ${inner}${lock ? `<span class="lk">🔒 ${esc(lock)}</span>` : ''}</button>`;
   };
   return `
-    <div class="sec"><h3>ตัวละคร</h3><div class="grid">${ANIMALS.map(a => opt('animal', a, a.e)).join('')}</div></div>
-    <div class="sec"><h3>สี</h3><div class="grid">${COLORS.map(c => opt('color', c, `<span class="swatch" style="background:${c.c === 'rainbow' ? 'linear-gradient(135deg,#ff6b6b,#ffc83d,#4cd38a,#4aa8ff,#a46bff)' : c.c}"></span>`)).join('')}</div></div>
+    <div class="sec"><h3>${KIDS[CUR].part}</h3><div class="grid">${COLORS.map(c => opt('color', c, `<span class="swatch" style="background:${c.c === 'rainbow' ? 'linear-gradient(135deg,#ff6b6b,#ffc83d,#4cd38a,#4aa8ff,#a46bff)' : c.c}"></span>`)).join('')}</div></div>
     ${setup ? '' : `<div class="sec"><h3>ของแต่งตัว</h3><div class="grid">${ACCS.map(a => opt('acc', a, `<span style="font-size:${a.id === 'none' ? 22 : 36}px">${a.e}</span>`)).join('')}</div>
       <p class="small muted" style="margin:10px 0 0">เลเวลยิ่งสูง ยิ่งมีของให้แต่งเยอะขึ้น</p></div>`}`;
 }
 window.setPart = (kind, id, setup) => {
-  const list = kind === 'animal' ? ANIMALS : kind === 'color' ? COLORS : ACCS;
+  const list = kind === 'color' ? COLORS : ACCS;
   const it = list.find(x => x.id === id);
   const lock = itemLocked(P(), it);
   if (lock) { toast(`ยังล็อกอยู่ — ปลดล็อกเมื่อ${lock}`); return; }
   if (setup) { DRAFT[kind] = id; $('#app').innerHTML = setupHTML(); return; }
-  P().mascot[kind] = id; save(); $('#app').innerHTML = homeHTML();
+  P().mascot[kind] = id; save(); ME_CLIP = 'yay'; $('#app').innerHTML = homeHTML();
 };
 
 // ---------------------------------------------------------------- placement ask
 function placementAskHTML() {
   const p = P();
   return `<div class="wrap">
-    <div class="bubble-row" style="margin-top:30px">${mascotHTML(p.mascot, 96, 'bounce')}
+    <div class="bubble-row" style="margin-top:30px">${mascotHTML(p.mascot, 120)}
       <div class="bubble">${tapWords(`${p.name} อยากเริ่มจากตรงไหนดี?`)}</div></div>
     <div class="sec">
       <h3>🚀 ทำแบบทดสอบวัดระดับ</h3>
@@ -374,7 +397,7 @@ function placementAskHTML() {
   </div>`;
 }
 window.skipTest = () => { P().placement = 0; save(); render(); };
-window.back = () => { CUR = null; DRAFT = null; render(); };
+window.back = () => { CUR = null; DRAFT = null; DRAFT_CLIP = 'hello'; render(); };
 
 // ---------------------------------------------------------------- home
 function homeHTML() {
@@ -383,7 +406,7 @@ function homeHTML() {
   return `
   <div class="topbar"><div class="topbar-in">
     <button class="iconbtn" data-on="back" aria-label="เปลี่ยนคน">←</button>
-    ${mascotHTML(p.mascot, 52)}
+    ${mascotHTML(p.mascot, 60, 'idle', CUR, true)}
     <div class="info"><div class="nm">${esc(p.name)} <span class="lvbadge">เลเวล ${lv.lvl}</span></div>
       <div class="bar xp"><i style="width:${(lv.into / lv.need) * 100}%"></i></div>
       <div class="xpt">${lv.into} / ${lv.need} XP ถึงเลเวลถัดไป</div></div>
@@ -394,7 +417,7 @@ function homeHTML() {
       .map(([k, e, t]) => `<button class="${TAB === k ? 'on' : ''}" data-on="setTab|${k}"><b>${e}</b>${t}</button>`).join('')}
   </nav>`;
 }
-window.setTab = t => { TAB = t; $('#app').innerHTML = homeHTML(); window.scrollTo(0, 0); };
+window.setTab = t => { TAB = t; ME_CLIP = 'hello'; $('#app').innerHTML = homeHTML(); window.scrollTo(0, 0); };
 
 function pathHTML() {
   const p = P();
@@ -417,9 +440,10 @@ window.openLesson = i => {
   startLesson(i);
 };
 
+let ME_CLIP = 'hello';
 function meHTML() {
-  const p = P();
-  return `<div class="preview">${mascotHTML(p.mascot, 150, 'bounce')}<div class="muted small">คู่หูของ ${esc(p.name)}</div></div>${customizerHTML(p.mascot, false)}`;
+  const p = P(), clip = ME_CLIP; ME_CLIP = 'idle';
+  return `<div class="preview">${mascotHTML(p.mascot, 230, clip)}<div class="muted small">คู่หูของ ${esc(p.name)}</div></div>${customizerHTML(p.mascot, false)}`;
 }
 function stickersHTML() {
   const p = P(), n = teamCount();
@@ -505,7 +529,7 @@ function showIntro() {
   shell(`
     ${L.isBoss ? '<span class="tag">👑 บทบอส</span>' : ''}
     <h2 style="font-size:24px">${esc(L.title)}</h2>
-    <div class="bubble-row">${mascotHTML(p.mascot, 80, 'bounce')}
+    <div class="bubble-row">${mascotHTML(p.mascot, 110, 'hello')}
       <div class="bubble">${tapWords(intro)} ${sayBtn(intro)}</div></div>
     ${words.length ? `<p class="muted small" style="margin:0 0 10px">แตะการ์ดเพื่อฟังเสียงคำใหม่ในบทนี้</p>
       <div class="wcards">${words.map((w, k) => `<button class="wcard" data-say="${esc(w.word)}" ><span class="e">${w.emoji}</span><span class="t">${esc(w.word)}</span></button>`).join('')}</div>`
@@ -598,11 +622,11 @@ function grade(st) {
   if (st.tries === 1) RUN.firstTry++;
 }
 function goodFoot(extra = '') {
-  setFoot(`<div class="fb"><span style="font-size:36px">🎉</span><div><div class="msg">${pick(PRAISE)}</div><div class="sub">+${XP_PER_STEP} XP ${extra}</div></div></div>
+  setFoot(`<div class="fb">${mascotHTML(P().mascot, 72, 'yay')}<div><div class="msg">${pick(PRAISE)}</div><div class="sub">+${XP_PER_STEP} XP ${extra}</div></div></div>
     <button class="btn block good" data-on="next">ไปต่อ</button>`, 'good');
 }
 function warmFoot(sub) {
-  setFoot(`<div class="fb">${mascotHTML(P().mascot, 48)}<div><div class="msg">${pick(RETRY)}</div><div class="sub">${sub}</div></div></div>
+  setFoot(`<div class="fb">${mascotHTML(P().mascot, 72, 'encourage')}<div><div class="msg">${pick(RETRY)}</div><div class="sub">${sub}</div></div></div>
     <button class="btn block warm" data-on="retry">ลองอีกครั้ง</button>`, 'warm');
 }
 window.retry = () => {
@@ -682,6 +706,7 @@ function finishLesson() {
   const earned = RUN.xp + bonus;
   p.xp += earned;
   p.completed[L.id] = true;
+  p.lastPlayed = Date.now();
   delete p.testedOut[L.id];
   let gotSticker = null, gotUnlock = null;
   const sid = L.reward?.sticker;
@@ -694,7 +719,7 @@ function finishLesson() {
   const g = nextGoal(teamAfter);
 
   $('#app').innerHTML = `<div class="done">
-    ${mascotHTML(p.mascot, 130, 'pop')}
+    ${mascotHTML(p.mascot, 220, teamCount() >= 32 ? 'cheer2' : 'cheer')}
     <h1>${L.isBoss ? 'ชนะบทบอสแล้ว!' : 'จบบทแล้ว!'}</h1>
     <div class="muted">${esc(L.title)}</div>
     <div class="stats">
@@ -733,7 +758,7 @@ window.startTest = () => {
 };
 function modalIntroTest() {
   const p = P();
-  shell(`<div class="bubble-row" style="margin-top:20px">${mascotHTML(p.mascot, 90, 'bounce')}
+  shell(`<div class="bubble-row" style="margin-top:20px">${mascotHTML(p.mascot, 110, 'hello')}
       <div class="bubble">${tapWords('มาดูกันว่าอ่านได้ถึงไหนแล้ว')}</div></div>
     <div class="sec"><p style="margin:0">ทำทีละหน่วย หน่วยละ 4 ข้อ ตอบถูก 3 ข้อขึ้นไป ข้ามหน่วยนั้นได้เลย</p>
     <p class="muted small" style="margin:8px 0 0">ตอบผิดก็ไม่เป็นไรนะ แปลว่าจะได้เริ่มเรียนตรงนั้น ทุกหน่วยกลับมาเล่นได้เสมอ</p></div>`,
@@ -756,9 +781,9 @@ function testAnswer(st, ok) {
   if (ok) RUN.correct++;
   if (st.kind === 'order') renderOrder(st); else rerenderChoice();
   if (ok) {
-    setFoot(`<div class="fb"><span style="font-size:32px">✅</span><div class="msg">ถูกต้อง!</div></div><button class="btn block good" data-on="next">ข้อต่อไป</button>`, 'good');
+    setFoot(`<div class="fb">${mascotHTML(P().mascot, 72, 'yay')}<div class="msg">ถูกต้อง!</div></div><button class="btn block good" data-on="next">ข้อต่อไป</button>`, 'good');
   } else {
-    setFoot(`<div class="fb">${mascotHTML(P().mascot, 44)}<div><div class="msg" style="color:var(--ink)">ไม่เป็นไร!</div><div class="sub">คำตอบคือ “${esc(Array.isArray(st.ex.answer) ? st.ex.answer.join(' ') : st.ex.answer)}” ข้อนี้จะได้เรียนในบทเรียน</div></div></div>
+    setFoot(`<div class="fb">${mascotHTML(P().mascot, 72, 'encourage')}<div><div class="msg" style="color:var(--ink)">ไม่เป็นไร!</div><div class="sub">คำตอบคือ “${esc(Array.isArray(st.ex.answer) ? st.ex.answer.join(' ') : st.ex.answer)}” ข้อนี้จะได้เรียนในบทเรียน</div></div></div>
       <button class="btn block" data-on="next">ข้อต่อไป</button>`);
   }
 }
@@ -767,11 +792,11 @@ function finishTestUnit() {
   const pass = RUN.correct >= 3;
   p.xp += RUN.correct * 5;
   if (pass) { u.lessons.forEach(l => { if (!p.completed[l.id]) p.testedOut[l.id] = true; }); RUN.passed.push(RUN.unitIx); }
-  p.placement = RUN.passed.length; save();
+  p.placement = RUN.passed.length; p.lastPlayed = Date.now(); save();
   const more = pass && RUN.unitIx < 4;
   const startAt = pass ? RUN.unitIx + 2 : RUN.unitIx + 1;
   shell(`<div class="done" style="padding-top:10px">
-      ${mascotHTML(p.mascot, 110, 'pop')}
+      ${mascotHTML(p.mascot, 180, pass ? 'cheer' : 'hello')}
       <h1>${pass ? `ผ่านหน่วยที่ ${RUN.unitNo}!` : 'เจอจุดเริ่มต้นแล้ว'}</h1>
       <div class="muted">ตอบถูก ${RUN.correct} จาก ${RUN.steps.length} ข้อ</div>
       <div class="gift">${pass
